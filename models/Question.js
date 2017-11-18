@@ -18,10 +18,13 @@ class Question{
     this.content = content
   }
   insert() {
+    const sql = `INSERT INTO questions (content) VALUES (?)`
     return new Promise(function(resolve){
-        resolve("This does nothing!")
+      db.run(sql, [this.content], function(err, result){
+        resolve("Row inserted!")
       })
-    }
+  })
+}
 }
 
 module.exports = Question;
